@@ -1,0 +1,26 @@
+server:
+  port: ${port:40100}
+spring:
+  application:
+    name: xc-service-search
+xuecheng:
+  elasticsearch:
+    hostlist: ${eshostlist:127.0.0.1:9200} #多个结点中间用逗号分隔
+  course:
+    index: xc_course
+    type: doc
+    source_field: id,name,grade,mt,st,charge,valid,pic,qq,price,price_old,status,studymodel,teachmode,expires,pub_time,start_time,end_time
+  media:
+    index: xc_course_media
+    type: doc
+    source_field: courseid,media_id,media_url,teachplan_id,media_fileoriginalname
+eureka:
+  client:
+    register-with-eureka: true
+    fetchRegistry: true #服务发现开关
+    serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址，多个中间用逗号分隔
+      defaultZone: ${EUREKA_SERVER:http://localhost:50101/eureka/}
+  instance:
+    prefer‐ip‐address: true #将自己的ip地址注册到Eureka服务中
+    ip‐address: ${IP_ADDRESS:127.0.0.1}
+    instance‐id: ${spring.application.name}:${server.port} #指定实例id

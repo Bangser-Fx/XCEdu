@@ -1,0 +1,20 @@
+server:
+  port: 31000
+spring:
+  application:
+    name: xc-service-manage-cms-client
+  data:
+    mongodb:
+      uri: mongodb://root:021033@localhost:27017
+      database: xc_cms
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtualHost: /
+#项目配置项
+xuecheng:
+  mq:
+    queue: queue_cms_postpage_03  #队列名（每此服务的队列不要一样）
+    routingKey: 5a751fab6abb5044e0d19ea1 #站点id做routingKey
